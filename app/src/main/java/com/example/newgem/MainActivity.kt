@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.google.ai.client.generativeai.BuildConfig
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.runBlocking
@@ -19,14 +20,14 @@ class MainActivity : AppCompatActivity() {
         val etprompt = findViewById<EditText>(R.id.prompt)
         val submitbtn = findViewById<Button>(R.id.submitbtn)
         val aioutput = findViewById<TextView>(R.id.aioutput)
-//        val apiKey = BuildConfig.API_KEY
+
 
         submitbtn.setOnClickListener {
             val prompt = etprompt.text.toString()
             etprompt
             val generativeModel = GenerativeModel(
                 modelName = "gemini-pro-vision",
-                apiKey = "AIzaSyDZFmdiMWZ2PU99bEzgoN4wSDU83y5fSKY"
+                apiKey = com.example.newgem.BuildConfig.apiKey
             )
 
             val image1: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.image1)
