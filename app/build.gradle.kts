@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.newgem"
-        minSdk = 25
+        minSdk = 29
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -33,9 +33,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
         }
-
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

@@ -4,58 +4,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="5dp"
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/prompt"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:ems="10"
-            android:hint="Enter text"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
             android:inputType="text"
-            android:minHeight="10dp" />
+            android:hint="Enter text"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
 
         <ImageButton
             android:id="@+id/addd"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="5dp"
             android:contentDescription="Add Image"
             android:src="@drawable/add" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/viewImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:padding="5dp"
-        android:visibility="gone"/>
+        android:contentDescription="Uploaded Image"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/submitbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:layout_marginTop="5dp" />
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
+        android:textSize="17dp" />
 
-    <TextView
-        android:id="@+id/aioutput"
+    <LinearLayout
+        android:id="@+id/copyreset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
-    //
+        <Button
+            android:id="@+id/copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Copy"
+            android:textSize="8dp" />
 
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Reset"
+            android:textSize="8dp" />
 
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/aioutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:paddingEnd="7dp"
+            android:textSize="15sp" />
+    </ScrollView>
 </LinearLayout>

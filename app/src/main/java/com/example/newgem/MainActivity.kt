@@ -1,5 +1,8 @@
 package com.example.newgem
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -9,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         val etprompt = findViewById<EditText>(R.id.prompt)
         val submitbtn = findViewById<Button>(R.id.submitbtn)
         val aioutput = findViewById<TextView>(R.id.aioutput)
+        val copybtn = findViewById<Button>(R.id.copy)
+        val resetbtn = findViewById<Button>(R.id.reset)
+        val copyresetbtn = findViewById<LinearLayout>(R.id.copyreset)
+
         viewImage = findViewById(R.id.viewImage)
         addbtn = findViewById(R.id.addd)
 
@@ -56,10 +64,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 runBlocking {
                     val response = generativeModel.generateContent(inputContent)
+                    copyresetbtn.visibility = View.VISIBLE
                     aioutput.text = response.text
                 }
             }
+        }
+
+        copybtn.setOnClickListener {
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Output", aioutput.text)
+            clipboardManager.setPrimaryClip(clip)
+            Toast.makeText(this, "Text copied", Toast.LENGTH_SHORT).show()
+        }
+
+        resetbtn.setOnClickListener {
             etprompt.text.clear()
+            viewImage.visibility = View.GONE
+            aioutput.text = ""
         }
     }
 
