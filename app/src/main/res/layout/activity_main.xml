@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -16,7 +15,10 @@
             android:id="@+id/prompt"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:ems="10"
             android:hint="Enter text"
             android:inputType="text"
@@ -35,10 +37,10 @@
 
     <ImageView
         android:id="@+id/viewImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="5dp"
-        android:src="@drawable/add" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/submitbtn"
@@ -52,6 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"/>
+
+    //
 
 
 </LinearLayout>

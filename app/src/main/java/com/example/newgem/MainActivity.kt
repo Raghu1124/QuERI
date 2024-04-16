@@ -4,11 +4,13 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
@@ -36,20 +38,26 @@ class MainActivity : AppCompatActivity() {
         submitbtn.setOnClickListener {
             val prompt = etprompt.text.toString()
             val generativeModel = GenerativeModel(
-                modelName = "gemini-pro-vision", apiKey = BuildConfig.apiKey
+                modelName = if (image1 == null) "gemini-pro" else "gemini-pro-vision",
+                apiKey = BuildConfig.apiKey
             )
 
-            val inputContent = content {
-                image(image1!!)
-//                image(image2)
-                if (prompt.isNotEmpty()) {
-                    text(prompt)
+            if (image1 == null && prompt.isEmpty()) {
+                Toast.makeText(this, "Please select an image or enter a prompt", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                val inputContent = content {
+                    if (image1 != null) {
+                        image(image1!!)
+                    }
+                    if (prompt.isNotEmpty()) {
+                        text(prompt)
+                    }
                 }
-            }
-
-            runBlocking {
-                val response = generativeModel.generateContent(inputContent)
-                aioutput.text = response.text
+                runBlocking {
+                    val response = generativeModel.generateContent(inputContent)
+                    aioutput.text = response.text
+                }
             }
             etprompt.text.clear()
         }
@@ -62,12 +70,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        viewImage.visibility = View.VISIBLE
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == imageRequestCode && resultCode == RESULT_OK) {
             val imageUri = data?.data
             if (imageUri != null) {
                 try {
-                    // Decode the image URI into a Bitmap
                     val inputStream = contentResolver.openInputStream(imageUri)
                     val bitmap = BitmapFactory.decodeStream(inputStream)
                     viewImage.setImageBitmap(bitmap)
