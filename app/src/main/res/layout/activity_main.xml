@@ -80,7 +80,7 @@
             android:layout_margin="5dp"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:text="Reset"
+            android:text="Clear"
             android:textSize="8dp" />
 
     </LinearLayout>
@@ -96,6 +96,6 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:paddingEnd="7dp"
-            android:textSize="15sp" />
+            android:textSize="15.5sp" />
     </ScrollView>
 </LinearLayout>
