@@ -28,6 +28,13 @@
             android:paddingEnd="8dp" />
 
         <ImageButton
+            android:id="@+id/close"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/close"
+            android:layout_margin="5dp" />
+
+        <ImageButton
             android:id="@+id/addd"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -72,9 +79,24 @@
             android:minHeight="0dp"
             android:text="Copy"
             android:textSize="8dp" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/copy"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/copy"-->
+<!--            app:tint="@color/white"/>-->
 
         <Button
             android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Reset"
+            android:textSize="8dp" />
+        <Button
+            android:id="@+id/clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
