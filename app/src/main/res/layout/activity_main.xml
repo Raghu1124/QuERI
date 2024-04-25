@@ -3,64 +3,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="5dp"
+    android:background="@color/back"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:orientation="horizontal">
+        android:layout_margin="10dp"
+        app:cardCornerRadius="20dp">
 
-        <EditText
-            android:id="@+id/prompt"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:inputType="text"
-            android:hint="Enter text"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp" />
+            android:background="@color/blue"
+            android:minHeight="120dp"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/close"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
+
+                <EditText
+                    android:id="@+id/prompt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/inputtext"
+                    android:hint="Search your question here . . . "
+                    android:inputType="text"
+                    android:minHeight="40dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+
+                <ImageButton
+                    android:id="@+id/close"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/circle"
+                    android:src="@drawable/close" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2.2px"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addd"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/blue"
+                    android:contentDescription="Add Image"
+                    android:src="@drawable/attach_file"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Attach files"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/viewImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/close"
-            android:layout_margin="5dp" />
-
-        <ImageButton
-            android:id="@+id/addd"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="5dp"
-            android:contentDescription="Add Image"
-            android:src="@drawable/add" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/viewImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="5dp"
-        android:contentDescription="Uploaded Image"
-        android:visibility="gone" />
+            android:contentDescription="Uploaded Image"
+            android:padding="5dp"
+            android:visibility="gone" />
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/submitbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="5dp"
-        android:textSize="17dp" />
+        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/searchbtn"
+        android:text="Search"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
 
     <LinearLayout
         android:id="@+id/copyreset"
