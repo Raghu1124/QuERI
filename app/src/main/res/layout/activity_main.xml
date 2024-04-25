@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@color/back"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -39,7 +39,8 @@
                     android:inputType="text"
                     android:minHeight="40dp"
                     android:paddingStart="8dp"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textSize="15sp" />
 
                 <ImageButton
                     android:id="@+id/close"
@@ -53,7 +54,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2.2px"
+                android:layout_height="1px"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
@@ -86,15 +87,18 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
             </LinearLayout>
-        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/viewImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="Uploaded Image"
-            android:padding="5dp"
-            android:visibility="gone" />
+            <ImageView
+                android:id="@+id/viewImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp"
+                android:contentDescription="Uploaded Image"
+                android:padding="5dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <Button
@@ -105,65 +109,75 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/searchbtn"
         android:text="Search"
+        android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="18dp" />
+        android:textSize="17dp" />
 
-    <LinearLayout
-        android:id="@+id/copyreset"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/outputcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/grey"
         android:visibility="gone">
 
-        <Button
-            android:id="@+id/copy"
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="Copy"
-            android:textSize="8dp" />
-<!--        <ImageButton-->
-<!--            android:id="@+id/copy"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/copy"-->
-<!--            app:tint="@color/white"/>-->
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/aioutput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="58dp"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="15.5sp"/>
+        </ScrollView>
+
+        <ImageButton
+            android:id="@+id/copy"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:src="@drawable/copy"
+            android:backgroundTint="#EAFFF5"/>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/clearreset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/searchbtn"
             android:text="Reset"
-            android:textSize="8dp" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
         <Button
             android:id="@+id/clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
+            android:layout_toEndOf="@+id/reset"
+            android:layout_weight="1"
+            android:background="@drawable/searchbtn"
             android:text="Clear"
-            android:textSize="8dp" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
 
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:id="@+id/aioutput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:paddingEnd="7dp"
-            android:textSize="15.5sp" />
-    </ScrollView>
 </LinearLayout>

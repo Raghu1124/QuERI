@@ -19,6 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.runBlocking
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewImage: ImageView
     private lateinit var addbtn: ImageButton
     private var image1: Bitmap? = null
+    private lateinit var outputcard: CardView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,15 +37,16 @@ class MainActivity : AppCompatActivity() {
         val etprompt = findViewById<EditText>(R.id.prompt)
         val submitbtn = findViewById<Button>(R.id.submitbtn)
         val aioutput = findViewById<TextView>(R.id.aioutput)
-        val copybtn = findViewById<Button>(R.id.copy)
+        val copybtn = findViewById<ImageButton>(R.id.copy)
         val clearbtn = findViewById<Button>(R.id.clear)
         val resetbtn = findViewById<Button>(R.id.reset)
         val closebtn = findViewById<ImageButton>(R.id.close)
-        val copyresetbtn = findViewById<LinearLayout>(R.id.copyreset)
+        val clearreset = findViewById<LinearLayout>(R.id.clearreset)
 
         setStatusBarColor(getColor(R.color.black))
         setWindowNavigationBarColor(getColor(R.color.black))
 
+        outputcard = findViewById(R.id.outputcard)
         viewImage = findViewById(R.id.viewImage)
         addbtn = findViewById(R.id.addd)
 
@@ -72,9 +75,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 runBlocking {
                     val response = generativeModel.generateContent(inputContent)
-                    copyresetbtn.visibility = View.VISIBLE
                     aioutput.text = response.text
                 }
+                outputcard.visibility = View.VISIBLE
+                clearreset.visibility = View.VISIBLE
             }
         }
 
@@ -99,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             etprompt.text.clear()
             viewImage.visibility = View.GONE
             aioutput.text = ""
-            copyresetbtn.visibility = View.GONE
+            clearreset.visibility = View.GONE
         }
 
         viewImage.setOnClickListener {
