@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back"
+    tools:context=".SplashScreen">
+
+    <LinearLayout
+        android:id="@+id/mainlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="Mainlogo"
+            android:src="@drawable/mainlogo" />
+
+        <TextView
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mainlogo"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="Questions Evaluated and Responded by Intelligence"
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>

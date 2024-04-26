@@ -10,6 +10,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -22,12 +23,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
     private val imageRequestCode = 100
     private lateinit var viewImage: ImageView
-    private lateinit var addbtn: ImageButton
+    private lateinit var addbtn: Button
     private var image1: Bitmap? = null
     private lateinit var outputcard: CardView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         val closebtn = findViewById<ImageButton>(R.id.close)
         val clearreset = findViewById<LinearLayout>(R.id.clearreset)
 
-        setStatusBarColor(getColor(R.color.black))
-        setWindowNavigationBarColor(getColor(R.color.black))
+        window.statusBarColor = getColor(R.color.back)
+        window.navigationBarColor = getColor(R.color.back)
 
         outputcard = findViewById(R.id.outputcard)
         viewImage = findViewById(R.id.viewImage)
@@ -79,6 +81,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 outputcard.visibility = View.VISIBLE
                 clearreset.visibility = View.VISIBLE
+
+                hideKeyboard()
             }
         }
 
@@ -101,9 +105,10 @@ class MainActivity : AppCompatActivity() {
 
         resetbtn.setOnClickListener {
             etprompt.text.clear()
-            viewImage.visibility = View.GONE
+            outputcard.visibility = View.GONE
             aioutput.text = ""
             clearreset.visibility = View.GONE
+            viewImage.visibility = View.GONE
         }
 
         viewImage.setOnClickListener {
@@ -111,6 +116,12 @@ class MainActivity : AppCompatActivity() {
                 showImagePreview(bitmap)
             }
         }
+    }
+
+    private fun hideKeyboard() {
+        val view = currentFocus ?: View(this)
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun showImagePreview(bitmap: Bitmap) {
@@ -125,14 +136,6 @@ class MainActivity : AppCompatActivity() {
         builder.setView(imageView)
         val dialog = builder.create()
         dialog.show()
-    }
-
-    private fun setWindowNavigationBarColor(color: Int) {
-        window.navigationBarColor = color
-    }
-
-    private fun setStatusBarColor(color: Int) {
-        window.statusBarColor = color
     }
 
     private fun pickImage() {
