@@ -27,8 +27,6 @@ import com.google.android.material.internal.ViewUtils.hideKeyboard
 import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
-
-//    nothing just checking
     private val imageRequestCode = 100
     private lateinit var viewImage: ImageView
     private lateinit var addbtn: Button
