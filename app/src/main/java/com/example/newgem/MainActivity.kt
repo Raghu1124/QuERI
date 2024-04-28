@@ -23,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
-import com.google.android.material.internal.ViewUtils.hideKeyboard
 import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {

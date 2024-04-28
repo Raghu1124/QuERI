@@ -8,9 +8,18 @@
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/headlogo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:src="@drawable/headlogo" />
+
     <View
+        android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:layout_below="@id/headlogo"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
@@ -21,6 +30,7 @@
         android:id="@+id/cardprompt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/view1"
         android:layout_margin="10dp"
         app:cardCornerRadius="20dp">
 
@@ -43,7 +53,7 @@
                 <EditText
                     android:id="@+id/prompt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
@@ -52,22 +62,26 @@
                     android:background="@drawable/inputtext"
                     android:hint="Search your question here . . . "
                     android:inputType="textAutoCorrect"
-                    android:textColorHint="@color/black"
                     android:minHeight="40dp"
                     android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:textSize="15sp" />
+                    android:paddingEnd="30dp"
+                    android:textColorHint="@color/black"
+                    android:textSize="16.5sp" />
 
                 <ImageButton
                     android:id="@+id/close"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_alignEnd="@id/prompt"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/circle"
                     android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/white"
                     android:contentDescription="clear"
-                    android:src="@drawable/close" />
+                    android:src="@drawable/close"
+                    app:tint="@color/line" />
             </RelativeLayout>
 
             <View
@@ -113,33 +127,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cardprompt"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
         android:background="@drawable/searchbtn"
         android:text="Search"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="17sp" />
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/outputcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        app:cardCornerRadius="20dp"
-        app:cardBackgroundColor="@color/grey"
         android:layout_above="@id/clearreset"
         android:layout_below="@id/submitbtn"
-        android:visibility="gone">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/grey"
+        app:cardCornerRadius="20dp">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="5dp">
 
             <TextView
@@ -149,7 +162,7 @@
                 android:layout_marginEnd="58dp"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="15.5sp"/>
+                android:textSize="15.5sp" />
         </ScrollView>
 
         <ImageButton
@@ -158,18 +171,18 @@
             android:layout_height="50dp"
             android:layout_gravity="end"
             android:layout_margin="8dp"
-            android:src="@drawable/copy"
-            android:backgroundTint="#EAFFF5"/>
+            android:backgroundTint="#EAFFF5"
+            android:src="@drawable/copy" />
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:id="@+id/clearreset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginRight="5dp"
         android:visibility="gone">
 
         <Button
@@ -177,24 +190,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
+            android:layout_weight="1"
             android:background="@drawable/searchbtn"
             android:text="Reset"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:layout_weight="1"
             android:textSize="15sp" />
 
         <Button
             android:id="@+id/clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="7dp"
             android:layout_toEndOf="@+id/reset"
+            android:layout_weight="1"
             android:background="@drawable/searchbtn"
             android:text="Clear"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:layout_margin="7dp"
-            android:layout_weight="1"
             android:textSize="15sp" />
 
     </LinearLayout>
