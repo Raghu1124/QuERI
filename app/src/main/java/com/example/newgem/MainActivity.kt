@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         submitbtn.setOnClickListener {
             val prompt = etprompt.text.toString()
             val generativeModel = GenerativeModel(
-                modelName = if (image1 == null) "gemini-pro" else "gemini-pro-vision",
+                modelName = if (image1 == null) "gemini-pro" else "gemini-1.5-flash-002",
                 apiKey = BuildConfig.apiKey
             )
 
